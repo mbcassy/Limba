@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E538BBE2234BA25100C71194 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E538BBE1234BA25000C71194 /* LoginViewController.swift */; };
+		E538BBE4234BA25900C71194 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E538BBE3234BA25900C71194 /* SignUpViewController.swift */; };
 		E553551C2319F18E00CFEFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553551B2319F18E00CFEFCF /* AppDelegate.swift */; };
 		E553551E2319F18E00CFEFCF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553551D2319F18E00CFEFCF /* HomeViewController.swift */; };
 		E55355232319F18E00CFEFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55355222319F18E00CFEFCF /* Assets.xcassets */; };
@@ -20,8 +22,6 @@
 		E57FE9E42329AFD6005E82BA /* OrientationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57FE9E32329AFD6005E82BA /* OrientationUtil.swift */; };
 		E5B67C512326A3DD0030294B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5B67C502326A3DD0030294B /* GoogleService-Info.plist */; };
 		E5D5840A23440B7F00D15E44 /* TextFieldUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5840923440B7F00D15E44 /* TextFieldUnderline.swift */; };
-		E5E1AD7D23396EB200A92134 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1AD7C23396EB200A92134 /* LoginViewController.swift */; };
-		E5E1AD7F23396EC400A92134 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1AD7E23396EC400A92134 /* SignUpViewController.swift */; };
 		F16FE6A87021375321C63F47 /* Pods_MVC_Kalimba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC47A8718DF83728256B348A /* Pods_MVC_Kalimba.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +29,8 @@
 		029BC34838BD389377938307 /* Pods-MVC Kalimba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVC Kalimba.release.xcconfig"; path = "Target Support Files/Pods-MVC Kalimba/Pods-MVC Kalimba.release.xcconfig"; sourceTree = "<group>"; };
 		98B95428A2F68FE325F247F3 /* Pods-MVC Kalimba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVC Kalimba.debug.xcconfig"; path = "Target Support Files/Pods-MVC Kalimba/Pods-MVC Kalimba.debug.xcconfig"; sourceTree = "<group>"; };
 		CC47A8718DF83728256B348A /* Pods_MVC_Kalimba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVC_Kalimba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E538BBE1234BA25000C71194 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E538BBE3234BA25900C71194 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E55355182319F18E00CFEFCF /* MVC Kalimba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVC Kalimba.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E553551B2319F18E00CFEFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E553551D2319F18E00CFEFCF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -45,8 +47,6 @@
 		E5B67C502326A3DD0030294B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5D5840923440B7F00D15E44 /* TextFieldUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldUnderline.swift; sourceTree = "<group>"; };
 		E5D6A08B2332DED9005B2ED2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		E5E1AD7C23396EB200A92134 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../../Utilities/LoginViewController.swift; sourceTree = "<group>"; };
-		E5E1AD7E23396EC400A92134 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../../../Utilities/SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				E553551D2319F18E00CFEFCF /* HomeViewController.swift */,
-				E5E1AD7C23396EB200A92134 /* LoginViewController.swift */,
-				E5E1AD7E23396EC400A92134 /* SignUpViewController.swift */,
+				E538BBE1234BA25000C71194 /* LoginViewController.swift */,
+				E538BBE3234BA25900C71194 /* SignUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -273,8 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E538BBE4234BA25900C71194 /* SignUpViewController.swift in Sources */,
 				E5D5840A23440B7F00D15E44 /* TextFieldUnderline.swift in Sources */,
-				E5E1AD7F23396EC400A92134 /* SignUpViewController.swift in Sources */,
 				E55355322319F36800CFEFCF /* AudioManager.swift in Sources */,
 				E55355342319F39600CFEFCF /* KalimbaNoteSounds.swift in Sources */,
 				E5599793231A11D3007AB213 /* CustomColors.swift in Sources */,
@@ -282,8 +282,8 @@
 				E553553C2319FDEF00CFEFCF /* KeyButton.swift in Sources */,
 				E553551E2319F18E00CFEFCF /* HomeViewController.swift in Sources */,
 				E57FE9E42329AFD6005E82BA /* OrientationUtil.swift in Sources */,
+				E538BBE2234BA25100C71194 /* LoginViewController.swift in Sources */,
 				E553551C2319F18E00CFEFCF /* AppDelegate.swift in Sources */,
-				E5E1AD7D23396EB200A92134 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
