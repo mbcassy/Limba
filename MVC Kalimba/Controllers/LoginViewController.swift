@@ -51,7 +51,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         let register = UIButton(frame: .zero)
         register.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(register)
-        constrain(this: register, toFirst: view, toSecond: login, width: 50.0/207.0, height: 55.0/876.0, left: 10, top: 10.75)
+        constrainOthers(this: register, toFirst: view, toSecond: view, toThird: login, width: 50.0/207.0, height: 55.0/876.0, left: 80, top: 30)
+       //(this: register, toFirst: view, toSecond: login, width: 50.0/207.0, height: 55.0/876.0, left: 10, top: 10.75)
         registerButton = register
 
         let byPassLogin = UIButton(frame: .zero)
