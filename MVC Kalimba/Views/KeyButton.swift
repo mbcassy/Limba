@@ -11,7 +11,6 @@ import UIKit
 class KeyButton : UIButton{
     
     static let note = ["D6", "B5", "G5", "E5", "C5", "A4", "F4", "D4", "C4", "E4", "G4", "B4", "D5", "F5", "A5", "C6", "E6"]
-    static let noteNames = Notes()
     
     init(frame: CGRect, key: String) {
         super.init(frame: frame)
@@ -31,6 +30,6 @@ class KeyButton : UIButton{
     }
     
     @IBAction func keyPressed(_ sender: UIButton){
-        AudioManager.sharedInstance.playSound(soundFileName: KeyButton.noteNames.sounds[sender.tag - 1])
+        AudioManager.sharedInstance.playSound(soundFileName: "Kalimba\(sender.tag)")
     }
 }

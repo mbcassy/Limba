@@ -10,23 +10,16 @@ import Firebase
 class HomeViewController: UIViewController {
     
     var handle: AuthStateDidChangeListenerHandle?
-    var keys : [KeyView] = []
     weak var logoutButton: UIButton?
+    weak var keyStackView: UIStackView?
    
     override func loadView() {
         super.loadView()
-        var newView : KeyView
         var newButton : KeyButton
-        
+        setUpStackView()
         newButton = KeyButton(frame: .zero, key: KeyButton.note[0])
         newButton.translatesAutoresizingMaskIntoConstraints = false
         newButton.tag = 1
-        newView = KeyView(frame: .zero, keyButton: newButton)
-        newView.translatesAutoresizingMaskIntoConstraints = false
-        newView.tag = 21
-        self.view.addSubview(newView)
-        constrainFirst(with: newView, and: newButton, to: self.view, heightMult: 55.0/138.0, widthMult: 10.0/219.0)
-        keys.append(newView)
         
         let logout = UIButton(frame: .zero)
         logout.translatesAutoresizingMaskIntoConstraints = false
@@ -36,28 +29,12 @@ class HomeViewController: UIViewController {
                                      logout.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0),
                                      logout.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor)])
         logoutButton = logout
-        for button in 1 ... 8{
-            newButton = KeyButton(frame: .zero, key: KeyButton.note[button])
-            newButton.translatesAutoresizingMaskIntoConstraints = false
-            newButton.tag = button + 1
-            newView = KeyView(frame: .zero, keyButton: newButton)
-            newView.translatesAutoresizingMaskIntoConstraints = false
-            newView.tag = 21 + button
-            self.view.addSubview(newView)
-            constrainOthers(with: newView, and: newButton, to: keys[button - 1], heightMult: 12.0/11.0, leftAnchor: 10)
-            keys.append(newView)
-        }
         
-        for button in 9 ... 16{
+        for button in 1 ... 16{
             newButton = KeyButton(frame: .zero, key: KeyButton.note[button])
             newButton.translatesAutoresizingMaskIntoConstraints = false
             newButton.tag = button + 1
-            newView = KeyView(frame: .zero, keyButton: newButton)
-            newView.translatesAutoresizingMaskIntoConstraints = false
-            newView.tag = 21 + button
-            self.view.addSubview(newView)
-            constrainOthers(with: newView, and: newButton, to: keys[button - 1], heightMult: 268.0/285.0, leftAnchor: 8)
-            keys.append(newView)
+            keyStackView?.addArrangedSubview(newButton)
         }
     }
     
@@ -99,26 +76,30 @@ class HomeViewController: UIViewController {
         logoutButton?.isHidden = true
     }
     
-    private func constrainFirst(with keyView: KeyView, and keyButton: KeyButton, to: UIView, heightMult: CGFloat, widthMult: CGFloat = 1.0){
-        NSLayoutConstraint.activate([keyView.heightAnchor.constraint(equalTo: to.heightAnchor, multiplier: heightMult),
-                                     keyView.widthAnchor.constraint(equalTo: to.widthAnchor, multiplier: widthMult),
-                                     keyView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-                                     keyView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-                                     keyButton.heightAnchor.constraint(equalTo: keyView.heightAnchor),
-                                     keyButton.widthAnchor.constraint(equalTo: keyView.widthAnchor),
-                                     keyButton.topAnchor.constraint(equalTo: keyView.topAnchor),
-                                     keyButton.leftAnchor.constraint(equalTo: keyView.leftAnchor)])
-    }
-    
-    private func constrainOthers(with keyView: KeyView, and keyButton: KeyButton, to: UIView, heightMult: CGFloat, leftAnchor: CGFloat){
-        NSLayoutConstraint.activate([keyView.heightAnchor.constraint(equalTo: to.heightAnchor, multiplier: heightMult),
-                                     keyView.widthAnchor.constraint(equalTo: to.widthAnchor),
-                                     keyView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-                                     keyView.leftAnchor.constraint(equalTo: to.rightAnchor, constant: leftAnchor),
-                                     keyButton.heightAnchor.constraint(equalTo: keyView.heightAnchor),
-                                     keyButton.widthAnchor.constraint(equalTo: keyView.widthAnchor),
-                                     keyButton.topAnchor.constraint(equalTo: keyView.topAnchor),
-                                     keyButton.leftAnchor.constraint(equalTo: keyView.leftAnchor)])
+    private func setUpStackView(){
+        let stackViewKeys = UIStackView(frame: .zero)
+        stackViewKeys.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(stackViewKeys)
+        let margins = view.layoutMarginsGuide
+        NSLayoutConstraint.activate([stackViewKeys.leadingAnchor.constraint(equalTo: margins.leadingAnchor), stackViewKeys.trailingAnchor.constraint(equalTo: margins.trailingAnchor)])
+               
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                stackViewKeys.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1.0),
+                guide.bottomAnchor.constraint(equalToSystemSpacingBelow: stackViewKeys.bottomAnchor, multiplier: 1.0)
+            ])
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                stackViewKeys.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: stackViewKeys.bottomAnchor, constant: standardSpacing)
+            ])
+        }
+        
+        stackViewKeys.distribution = .fillEqually
+        stackViewKeys.spacing = 8.0
+        keyStackView = stackViewKeys
     }
     
     @IBAction func logoutPressed(_ sender: UIButton){

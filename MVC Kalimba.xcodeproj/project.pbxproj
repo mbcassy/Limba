@@ -14,9 +14,7 @@
 		E55355232319F18E00CFEFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55355222319F18E00CFEFCF /* Assets.xcassets */; };
 		E55355262319F18E00CFEFCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55355242319F18E00CFEFCF /* LaunchScreen.storyboard */; };
 		E55355322319F36800CFEFCF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55355312319F36800CFEFCF /* AudioManager.swift */; };
-		E55355342319F39600CFEFCF /* KalimbaNoteSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55355332319F39600CFEFCF /* KalimbaNoteSounds.swift */; };
 		E55355362319F97700CFEFCF /* Kalimba Sound Files in Resources */ = {isa = PBXBuildFile; fileRef = E55355352319F97700CFEFCF /* Kalimba Sound Files */; };
-		E553553A2319FDCA00CFEFCF /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55355392319FDCA00CFEFCF /* KeyView.swift */; };
 		E553553C2319FDEF00CFEFCF /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553553B2319FDEF00CFEFCF /* KeyButton.swift */; };
 		E5599793231A11D3007AB213 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5599792231A11D3007AB213 /* CustomColors.swift */; };
 		E57FE9E42329AFD6005E82BA /* OrientationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57FE9E32329AFD6005E82BA /* OrientationUtil.swift */; };
@@ -38,9 +36,7 @@
 		E55355252319F18E00CFEFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E55355272319F18E00CFEFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55355312319F36800CFEFCF /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		E55355332319F39600CFEFCF /* KalimbaNoteSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalimbaNoteSounds.swift; sourceTree = "<group>"; };
 		E55355352319F97700CFEFCF /* Kalimba Sound Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Kalimba Sound Files"; sourceTree = "<group>"; };
-		E55355392319FDCA00CFEFCF /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		E553553B2319FDEF00CFEFCF /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
 		E5599792231A11D3007AB213 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		E57FE9E32329AFD6005E82BA /* OrientationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationUtil.swift; sourceTree = "<group>"; };
@@ -137,7 +133,6 @@
 		E553552F2319F27600CFEFCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E55355392319FDCA00CFEFCF /* KeyView.swift */,
 				E553553B2319FDEF00CFEFCF /* KeyButton.swift */,
 			);
 			path = Views;
@@ -147,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				E55355312319F36800CFEFCF /* AudioManager.swift */,
-				E55355332319F39600CFEFCF /* KalimbaNoteSounds.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,9 +270,7 @@
 				E538BBE4234BA25900C71194 /* SignUpViewController.swift in Sources */,
 				E5D5840A23440B7F00D15E44 /* TextFieldUnderline.swift in Sources */,
 				E55355322319F36800CFEFCF /* AudioManager.swift in Sources */,
-				E55355342319F39600CFEFCF /* KalimbaNoteSounds.swift in Sources */,
 				E5599793231A11D3007AB213 /* CustomColors.swift in Sources */,
-				E553553A2319FDCA00CFEFCF /* KeyView.swift in Sources */,
 				E553553C2319FDEF00CFEFCF /* KeyButton.swift in Sources */,
 				E553551E2319F18E00CFEFCF /* HomeViewController.swift in Sources */,
 				E57FE9E42329AFD6005E82BA /* OrientationUtil.swift in Sources */,
