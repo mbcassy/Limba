@@ -7,7 +7,7 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, HomeViewDelegate {
     
     var handle: AuthStateDidChangeListenerHandle?
     weak var logoutButton: UIButton?
@@ -15,32 +15,13 @@ class HomeViewController: UIViewController {
    
     override func loadView() {
         super.loadView()
-        var newButton : KeyButton
-        setUpStackView()
-        newButton = KeyButton(frame: .zero, key: KeyButton.note[0])
-        newButton.translatesAutoresizingMaskIntoConstraints = false
-        newButton.tag = 1
-        
-        let logout = UIButton(frame: .zero)
-        logout.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(logout)
-        NSLayoutConstraint.activate([logout.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5.0/64.0),
-                                     logout.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 25.0/207.0),
-                                     logout.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0),
-                                     logout.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor)])
-        logoutButton = logout
-        
-        for button in 1 ... 16{
-            newButton = KeyButton(frame: .zero, key: KeyButton.note[button])
-            newButton.translatesAutoresizingMaskIntoConstraints = false
-            newButton.tag = button + 1
-            keyStackView?.addArrangedSubview(newButton)
-        }
+        let homeView = HomeView()
+        homeView.delegate = self
+        view = homeView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpMainView()
         rotateDevice()
     }
     
@@ -65,44 +46,7 @@ class HomeViewController: UIViewController {
         UIView.setAnimationsEnabled(true) 
     }
     
-    private func setUpMainView(){
-        self.view.backgroundColor = .babyPeach
-        logoutButton?.backgroundColor = .babyLavender
-        logoutButton?.setTitle("LogOut", for: .normal)
-        logoutButton?.setTitleColor(.white, for: .normal)
-        logoutButton?.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        logoutButton?.titleLabel?.adjustsFontSizeToFitWidth = true
-        logoutButton?.addTarget(self, action: #selector(logoutPressed(_:)), for: .touchUpInside)
-        logoutButton?.isHidden = true
-    }
-    
-    private func setUpStackView(){
-        let stackViewKeys = UIStackView(frame: .zero)
-        stackViewKeys.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(stackViewKeys)
-        let margins = view.layoutMarginsGuide
-        NSLayoutConstraint.activate([stackViewKeys.leadingAnchor.constraint(equalTo: margins.leadingAnchor), stackViewKeys.trailingAnchor.constraint(equalTo: margins.trailingAnchor)])
-               
-        if #available(iOS 11, *) {
-            let guide = view.safeAreaLayoutGuide
-            NSLayoutConstraint.activate([
-                stackViewKeys.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1.0),
-                guide.bottomAnchor.constraint(equalToSystemSpacingBelow: stackViewKeys.bottomAnchor, multiplier: 1.0)
-            ])
-        } else {
-            let standardSpacing: CGFloat = 8.0
-            NSLayoutConstraint.activate([
-                stackViewKeys.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
-                bottomLayoutGuide.topAnchor.constraint(equalTo: stackViewKeys.bottomAnchor, constant: standardSpacing)
-            ])
-        }
-        
-        stackViewKeys.distribution = .fillEqually
-        stackViewKeys.spacing = 8.0
-        keyStackView = stackViewKeys
-    }
-    
-    @IBAction func logoutPressed(_ sender: UIButton){
+    func logoutButtonPressed() {
         let firebaseAuth = Auth.auth()
         do{
             try firebaseAuth.signOut()
