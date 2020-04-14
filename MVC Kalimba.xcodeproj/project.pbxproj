@@ -18,9 +18,11 @@
 		E553553C2319FDEF00CFEFCF /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553553B2319FDEF00CFEFCF /* KeyButton.swift */; };
 		E5599793231A11D3007AB213 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5599792231A11D3007AB213 /* CustomColors.swift */; };
 		E57FE9E42329AFD6005E82BA /* OrientationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57FE9E32329AFD6005E82BA /* OrientationUtil.swift */; };
+		E58B7A9A244656420091FDFF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B7A99244656420091FDFF /* LoginView.swift */; };
+		E58B7A9E244664630091FDFF /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B7A9D244664630091FDFF /* RegisterView.swift */; };
 		E5B67C512326A3DD0030294B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5B67C502326A3DD0030294B /* GoogleService-Info.plist */; };
 		E5CA36D52440F961003F3FA5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA36D42440F961003F3FA5 /* HomeView.swift */; };
-		E5CA36D72442769C003F3FA5 /* HomeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA36D62442769C003F3FA5 /* HomeViewDelegate.swift */; };
+		E5CA36D72442769C003F3FA5 /* DelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA36D62442769C003F3FA5 /* DelegateProtocols.swift */; };
 		E5D5840A23440B7F00D15E44 /* TextFieldUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5840923440B7F00D15E44 /* TextFieldUnderline.swift */; };
 		F16FE6A87021375321C63F47 /* Pods_MVC_Kalimba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC47A8718DF83728256B348A /* Pods_MVC_Kalimba.framework */; };
 /* End PBXBuildFile section */
@@ -42,9 +44,11 @@
 		E553553B2319FDEF00CFEFCF /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
 		E5599792231A11D3007AB213 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		E57FE9E32329AFD6005E82BA /* OrientationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationUtil.swift; sourceTree = "<group>"; };
+		E58B7A99244656420091FDFF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E58B7A9D244664630091FDFF /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E5B67C502326A3DD0030294B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5CA36D42440F961003F3FA5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		E5CA36D62442769C003F3FA5 /* HomeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDelegate.swift; sourceTree = "<group>"; };
+		E5CA36D62442769C003F3FA5 /* DelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateProtocols.swift; sourceTree = "<group>"; };
 		E5D5840923440B7F00D15E44 /* TextFieldUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldUnderline.swift; sourceTree = "<group>"; };
 		E5D6A08B2332DED9005B2ED2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -139,6 +143,8 @@
 			children = (
 				E553553B2319FDEF00CFEFCF /* KeyButton.swift */,
 				E5CA36D42440F961003F3FA5 /* HomeView.swift */,
+				E58B7A99244656420091FDFF /* LoginView.swift */,
+				E58B7A9D244664630091FDFF /* RegisterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				E55355312319F36800CFEFCF /* AudioManager.swift */,
-				E5CA36D62442769C003F3FA5 /* HomeViewDelegate.swift */,
+				E5CA36D62442769C003F3FA5 /* DelegateProtocols.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,10 +281,12 @@
 			files = (
 				E538BBE4234BA25900C71194 /* SignUpViewController.swift in Sources */,
 				E5D5840A23440B7F00D15E44 /* TextFieldUnderline.swift in Sources */,
+				E58B7A9E244664630091FDFF /* RegisterView.swift in Sources */,
 				E55355322319F36800CFEFCF /* AudioManager.swift in Sources */,
 				E5599793231A11D3007AB213 /* CustomColors.swift in Sources */,
-				E5CA36D72442769C003F3FA5 /* HomeViewDelegate.swift in Sources */,
+				E5CA36D72442769C003F3FA5 /* DelegateProtocols.swift in Sources */,
 				E553553C2319FDEF00CFEFCF /* KeyButton.swift in Sources */,
+				E58B7A9A244656420091FDFF /* LoginView.swift in Sources */,
 				E553551E2319F18E00CFEFCF /* HomeViewController.swift in Sources */,
 				E57FE9E42329AFD6005E82BA /* OrientationUtil.swift in Sources */,
 				E538BBE2234BA25100C71194 /* LoginViewController.swift in Sources */,

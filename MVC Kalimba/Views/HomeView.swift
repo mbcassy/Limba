@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import Firebase
 
 class HomeView: UIView {
-    var handle: AuthStateDidChangeListenerHandle?
     weak var keyStackView: UIStackView?
     weak var logoutButton: UIButton?
     var delegate: HomeViewDelegate?

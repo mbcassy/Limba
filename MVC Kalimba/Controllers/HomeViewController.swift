@@ -46,6 +46,8 @@ class HomeViewController: UIViewController, HomeViewDelegate {
         UIView.setAnimationsEnabled(true) 
     }
     
+    //MARK: - HomeViewDelegate
+    
     func logoutButtonPressed() {
         let firebaseAuth = Auth.auth()
         do{
