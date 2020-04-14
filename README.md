@@ -7,12 +7,9 @@ and to add them to the database.
 This is my first iOS app, and I welcome any and all feedback. I have a to-do list of aspects to add/fix on this project as well.
 
 ## Getting Started
-To play, either register/login, or press the 'just play' button and start to tap the keys! To stop a sound, 
-just swipe up on the key. You can also swipe left and right on a key to play the sound.
+To play, either register/login, or press the 'just play' button and start to tap the keys!
 
 ## To-Do
-* Add functionality for iPadOS
-* Move from MVC to MVVM 
 * Improve sound file quality 
 
 ## Author
