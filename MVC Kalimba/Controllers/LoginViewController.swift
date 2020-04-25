@@ -15,8 +15,6 @@ class LoginViewController: UIViewController , UITextFieldDelegate, LoginViewDele
         return view as! LoginView
     }
     
-    var handle: AuthStateDidChangeListenerHandle?
-
     override func loadView() {
         super.loadView()
         let loginView = LoginView()
@@ -38,18 +36,13 @@ class LoginViewController: UIViewController , UITextFieldDelegate, LoginViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener{(auth, user) in
-            if user != nil{
-                self.thisView.emailText?.text = nil
-                self.thisView.passwordText?.text = nil
-            }
-        }
+        self.thisView.emailText?.text = nil
+        self.thisView.passwordText?.text = nil
         OrientationLocks.lockOrientation(.portrait)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
         OrientationLocks.lockOrientation(.all)
     }
     //MARK: - LoginViewDelegate
@@ -59,6 +52,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate, LoginViewDele
         justPlay.modalPresentationStyle = .fullScreen
         OrientationLocks.lockOrientation(.landscape)
         show(justPlay, sender: self)
+        //present(justPlay, animated: true, completion: nil)
     }
         
     func didLogin(email emailText: UITextField?, password passwordText: UITextField?) {
@@ -85,7 +79,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate, LoginViewDele
     func didPressRegister(){
         let register = SignUpViewController()
         register.modalPresentationStyle = .fullScreen
-        showDetailViewController(register, sender: self)
+        show(register, sender: self)
     }
     
     //MARK: - UITextFieldDelegate
