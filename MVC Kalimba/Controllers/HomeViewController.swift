@@ -25,10 +25,11 @@ class HomeViewController: UIViewController, HomeViewDelegate {
         rotateDevice()
     }
     
+    //possible memory leak?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener{(auth, user) in
-            if user != nil{
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
                 self.logoutButton?.isHidden = false
             }
         }
@@ -37,8 +38,17 @@ class HomeViewController: UIViewController, HomeViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        if let listenerHandle = handle {
+            Auth.auth().removeStateDidChangeListener(listenerHandle)
+            handle = nil
+        }
         OrientationLocks.lockOrientation(.all)
+    }
+    
+    func handleAuthState(auth: Auth, user: User?) {
+        if user != nil {
+            logoutButton?.isHidden = false
+        }
     }
     
     func rotateDevice(){
@@ -53,15 +63,18 @@ class HomeViewController: UIViewController, HomeViewDelegate {
         do{
             try firebaseAuth.signOut()
         }
-        catch let logoutError as NSError{
+        catch let logoutError as NSError {
             print("Error signing out: \(logoutError)")
             let failAlert = UIAlertController(title: "LogOut Failed", message: logoutError.localizedDescription, preferredStyle: .alert)
             failAlert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(failAlert, animated: true, completion: nil)
         }
-        let login = LoginViewController()
-        login.modalPresentationStyle = .fullScreen
+        
         OrientationLocks.lockOrientation(.portrait)
-        show(login, sender: self)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("HomeVC deallocated.")
     }
 }
