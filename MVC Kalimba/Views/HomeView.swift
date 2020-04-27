@@ -11,7 +11,7 @@ import UIKit
 class HomeView: UIView {
     weak var keyStackView: UIStackView?
     weak var logoutButton: UIButton?
-    var delegate: HomeViewDelegate?
+    weak var delegate: HomeViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,22 +32,19 @@ class HomeView: UIView {
                
                let logout = UIButton(frame: .zero)
                logout.translatesAutoresizingMaskIntoConstraints = false
-               self.addSubview(logout)
-               NSLayoutConstraint.activate([logout.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 5.0/64.0),
-                                            logout.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 25.0/207.0),
-                                            logout.bottomAnchor.constraint(equalToSystemSpacingBelow: self.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0),
-                                            logout.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor)])
                logoutButton = logout
                
-               for button in 1 ... 16{
+               for button in 1 ... 16 {
                    newButton = KeyButton(frame: .zero, key: KeyButton.note[button])
                    newButton.translatesAutoresizingMaskIntoConstraints = false
                    newButton.tag = button + 1
                    keyStackView?.addArrangedSubview(newButton)
                }
+        keyStackView?.addArrangedSubview(logout)
+        logoutButton = logout
     }
     
-    private func setUpStackView(){
+    private func setUpStackView() {
            let stackViewKeys = UIStackView(frame: .zero)
            stackViewKeys.translatesAutoresizingMaskIntoConstraints = false
            self.addSubview(stackViewKeys)
@@ -73,7 +70,7 @@ class HomeView: UIView {
            keyStackView = stackViewKeys
     }
     
-    private func setUpMainView(){
+    private func setUpMainView() {
            self.backgroundColor = .babyPeach
            logoutButton?.backgroundColor = .babyLavender
            logoutButton?.setTitle("LogOut", for: .normal)
@@ -81,10 +78,14 @@ class HomeView: UIView {
            logoutButton?.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
            logoutButton?.titleLabel?.adjustsFontSizeToFitWidth = true
            logoutButton?.addTarget(self, action: #selector(logoutPressed(_:)), for: .touchUpInside)
-           logoutButton?.isHidden = true
+           logoutButton?.isHidden = false
     }
     
-    @IBAction func logoutPressed(_ sender: UIButton){
+    @IBAction func logoutPressed(_ sender: UIButton) {
         self.delegate?.logoutButtonPressed()
+    }
+    
+    deinit {
+        print("Home View deallocated.")
     }
 }

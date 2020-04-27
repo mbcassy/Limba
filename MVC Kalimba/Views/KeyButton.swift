@@ -21,7 +21,7 @@ class KeyButton : UIButton{
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setUpButton(forKey key: String) {
+   func setUpButton(forKey key: String) {
         backgroundColor = .goldenYellow
         setTitle(key, for: .normal)
         setTitleColor(.black, for: .normal)
@@ -31,5 +31,9 @@ class KeyButton : UIButton{
     
     @IBAction func keyPressed(_ sender: UIButton){
         AudioManager.sharedInstance.playSound(soundFileName: "Kalimba\(sender.tag)")
+    }
+    
+    deinit {
+        print("Key button deallocated.")
     }
 }

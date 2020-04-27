@@ -8,8 +8,6 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController, HomeViewDelegate {
-    
-    var handle: AuthStateDidChangeListenerHandle?
     weak var logoutButton: UIButton?
     weak var keyStackView: UIStackView?
    
@@ -25,30 +23,19 @@ class HomeViewController: UIViewController, HomeViewDelegate {
         rotateDevice()
     }
     
-    //possible memory leak?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil {
-                self.logoutButton?.isHidden = false
-            }
+        
+        if Auth.auth().currentUser != nil {
+          self.logoutButton?.isHidden = false
         }
+
         OrientationLocks.lockOrientation(.landscape)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let listenerHandle = handle {
-            Auth.auth().removeStateDidChangeListener(listenerHandle)
-            handle = nil
-        }
         OrientationLocks.lockOrientation(.all)
-    }
-    
-    func handleAuthState(auth: Auth, user: User?) {
-        if user != nil {
-            logoutButton?.isHidden = false
-        }
     }
     
     func rotateDevice(){
