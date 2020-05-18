@@ -12,13 +12,13 @@ protocol HomeViewDelegate: AnyObject {
     func logoutButtonPressed()
 }
 
-protocol LoginViewDelegate {
+protocol LoginViewDelegate: AnyObject {
     func didPressToPlay()
-    func didLogin(email emailText: UITextField?, password passwordText: UITextField?)
+    func didLogin(_ loginView: LoginView, email emailText: UITextField?, password passwordText: UITextField?)
     func didPressRegister()
 }
 
-protocol RegisterViewDelegate {
+protocol RegisterViewDelegate: AnyObject {
     func didPressToPlay()
-    func didRegister(email emailText: UITextField?, password passwordText: UITextField?)
+    func didRegister(_ registerView: RegisterView, email emailText: UITextField?, password passwordText: UITextField?)
 }

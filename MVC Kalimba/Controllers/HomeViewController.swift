@@ -60,8 +60,4 @@ class HomeViewController: UIViewController, HomeViewDelegate {
         OrientationLocks.lockOrientation(.portrait)
         self.dismiss(animated: true, completion: nil)
     }
-    
-    deinit {
-        print("HomeVC deallocated.")
-    }
 }

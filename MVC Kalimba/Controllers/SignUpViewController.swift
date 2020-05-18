@@ -39,6 +39,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, RegisterViewD
         thisView.passwordText?.underline()
     }
     
+    //possible memory leak
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener{(auth, user) in
@@ -57,13 +58,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, RegisterViewD
     }
     
     //MARK: - RegisterViewDelegate
-    func didRegister(email emailText: UITextField?, password passwordText: UITextField?) {
+    func didRegister(_ registerView: RegisterView, email emailText: UITextField?, password passwordText: UITextField?) {
         guard let email = emailText?.text , let password = passwordText?.text, email.count > 0, password.count > 0 else{
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password){authResult, error in
-            guard let _ = authResult?.user, error == nil else{
+            guard let _ = authResult?.user, error == nil else {
             let failAlert = UIAlertController(title: "SignUp Failed", message: error?.localizedDescription, preferredStyle: .alert)
                 failAlert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(failAlert, animated: true, completion: nil)
@@ -71,7 +72,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, RegisterViewD
             }
             // Add a new document with a generated ID
             var ref: DocumentReference? = nil
-            self.db.collection("users").document(email).setData(["username": email]){ err in
+            self.db.collection("users").document(email).setData(["username": email]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {
@@ -84,13 +85,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, RegisterViewD
             loginToPlay.modalPresentationStyle = .fullScreen
             OrientationLocks.lockOrientation(.landscape)
             
-            Auth.auth().signIn(withEmail: email, password: password){ (user, error) in
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                 if let signInError = error, user == nil{
                     let failAlert = UIAlertController(title: "SignIn Failed", message: signInError.localizedDescription, preferredStyle: .alert)
                     failAlert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(failAlert, animated: true, completion: nil)
                 }
-                else{
+                else {
                     self.show(loginToPlay, sender: self)
                 }
             }
@@ -101,7 +102,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, RegisterViewD
         let justPlay = HomeViewController()
         justPlay.modalPresentationStyle = .fullScreen
         OrientationLocks.lockOrientation(.landscape)
-        showDetailViewController(justPlay, sender: self)
+        show(justPlay, sender: self)
     }
     
     //MARK: - UITextFieldDelegate
@@ -110,7 +111,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, RegisterViewD
         if textField == thisView.emailText {
             thisView.passwordText?.becomeFirstResponder()
         }
-        else{
+        else {
             textField.resignFirstResponder()
         }
         return true

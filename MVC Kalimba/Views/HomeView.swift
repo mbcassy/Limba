@@ -84,8 +84,4 @@ class HomeView: UIView {
     @IBAction func logoutPressed(_ sender: UIButton) {
         self.delegate?.logoutButtonPressed()
     }
-    
-    deinit {
-        print("Home View deallocated.")
-    }
 }

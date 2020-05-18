@@ -14,7 +14,7 @@ class RegisterView: UIView {
     weak var signUpText: UILabel?
     weak var registerButton: UIButton?
     weak var justPlay: UIButton?
-    var delegate: RegisterViewDelegate?
+    weak var delegate: RegisterViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,7 +88,7 @@ class RegisterView: UIView {
     }
     
     @IBAction func registerUser(_ sender: UIButton) {
-        self.delegate?.didRegister(email: emailText, password: passwordText)
+        self.delegate?.didRegister(self, email: emailText, password: passwordText)
     }
     
     @IBAction func toPlay(_ sender: UIButton) {

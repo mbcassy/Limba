@@ -52,10 +52,9 @@ class LoginViewController: UIViewController , UITextFieldDelegate, LoginViewDele
         justPlay.modalPresentationStyle = .fullScreen
         OrientationLocks.lockOrientation(.landscape)
         show(justPlay, sender: self)
-        //present(justPlay, animated: true, completion: nil)
     }
         
-    func didLogin(email emailText: UITextField?, password passwordText: UITextField?) {
+    func didLogin(_ loginView: LoginView, email emailText: UITextField?, password passwordText: UITextField?) {
         let loginToPlay = HomeViewController()
         loginToPlay.modalPresentationStyle = .fullScreen
         OrientationLocks.lockOrientation(.landscape)

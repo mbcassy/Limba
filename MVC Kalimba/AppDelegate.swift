@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.database = Firestore.firestore()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = LoginViewController()
-        //window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
         return true
     }

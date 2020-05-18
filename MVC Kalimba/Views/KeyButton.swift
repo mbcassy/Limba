@@ -32,8 +32,4 @@ class KeyButton : UIButton{
     @IBAction func keyPressed(_ sender: UIButton){
         AudioManager.sharedInstance.playSound(soundFileName: "Kalimba\(sender.tag)")
     }
-    
-    deinit {
-        print("Key button deallocated.")
-    }
 }

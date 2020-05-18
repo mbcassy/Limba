@@ -15,7 +15,7 @@ class LoginView: UIView {
     weak var justPlay: UIButton?
     weak var loginButton: UIButton?
     weak var registerButton: UIButton?
-    var loginViewDelegate: LoginViewDelegate?
+    weak var loginViewDelegate: LoginViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,7 +104,7 @@ class LoginView: UIView {
     }
     
     @IBAction func loginPressed(_ sender: UIButton){
-        self.loginViewDelegate?.didLogin(email: emailText, password: passwordText)
+        self.loginViewDelegate?.didLogin(self, email: emailText, password: passwordText)
     }
     
     @IBAction func registerPressed(_ sender: UIButton){
